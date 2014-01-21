@@ -13,7 +13,6 @@ function shore(paramobj) {
     paramobj.view = paramobj.view || 'view';
     paramobj.source = paramobj.source || 'source';
     paramobj.color = paramobj.color || 'screen';
-    //paramobj.shadowColor = paramobj.shadowColor || 'screen';
 
     // load params into global var
     params = paramobj;
@@ -96,7 +95,6 @@ function update() {
             ctx.drawImage(img, -1, 0);
         }
         ctx.fillRect(xpos, (c.height - (frequencyData[0] * params.scale))+(c.height*1/3), 1, (c.height*2/3));
-	//	ctx.fillStyle = params.shadowColor;
 		ctx.fillStyle = "#BABABA";
 		ctx.fillRect(xpos, (c.height - (frequencyData[0] * params.scale))+(c.height*1/3), 1, (c.height*(-1/3)));
 		
