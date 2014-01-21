@@ -13,6 +13,7 @@ function shore(paramobj) {
     paramobj.view = paramobj.view || 'view';
     paramobj.source = paramobj.source || 'source';
     paramobj.color = paramobj.color || 'screen';
+    paramobj.shadowColor = paramobj.shadowColor || 'screen';
 
     // load params into global var
     params = paramobj;
@@ -82,7 +83,7 @@ function update() {
         // don't log
     } else {
         // the frequencyData multiplier controls the graph scale
-        var gradient = ctx.createLinearGradient(0, 0, 0, c.height);
+        var gradient = ctx.createLinearGradient(0, 0, 0, (c.height*2/3));
         gradient.addColorStop(0, 'white');
         gradient.addColorStop(1, params.color);
         ctx.fillStyle = gradient;
@@ -94,6 +95,10 @@ function update() {
             ctx.clearRect (0, 0, c.width, c.height);
             ctx.drawImage(img, -1, 0);
         }
-        ctx.fillRect(xpos, (c.height - (frequencyData[0] * params.scale)), 1, c.height);
+        ctx.fillRect(xpos, (c.height - (frequencyData[0] * params.scale))+(c.height*1/3), 1, (c.height*2/3));
+		ctx.fillStyle = params.shadowColor;
+		ctx.fillRect(xpos, (c.height - (frequencyData[0] * params.scale))+(c.height*1/3), 1, (c.height*(-1/3)));
+		
+
     }
 }
